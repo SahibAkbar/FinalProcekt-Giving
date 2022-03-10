@@ -36,32 +36,43 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.ImageFile.ContentType == "image/jpeg" || model.ImageFile.ContentType == "image/png")
+                if (model.ImageFile != null && model.Title != null && model.Content != null && model.CauseNeed != 0)
                 {
-                    if (model.ImageFile.Length <= 2000000)
+                    if (model.ImageFile.ContentType == "image/jpeg" || model.ImageFile.ContentType == "image/png")
                     {
-                        string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ImageFile.FileName;
-                        string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
-                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        if (model.ImageFile.Length <= 2000000)
                         {
-                            model.ImageFile.CopyTo(stream);
+                            string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmss") + "-" + model.ImageFile.FileName;
+                            string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                model.ImageFile.CopyTo(stream);
+                            }
+                            model.Image = fileName;
+                            model.CreatedDate = DateTime.Now;
+                            _appDbContext.Causes.Add(model);
+                            _appDbContext.SaveChanges();
+                            return RedirectToAction("Index");
                         }
-                        model.Image = fileName;
-                        model.CreatedDate = DateTime.Now;
-                        _appDbContext.Causes.Add(model);
-                        _appDbContext.SaveChanges();
-                        return RedirectToAction("Index");
+                        else
+                        {
+                            return View(model);
+
+                        }
                     }
                     else
                     {
                         return View(model);
-
                     }
                 }
                 else
                 {
-                    return View(model);
+                    TempData["Erroor"] = "Please fill in the blanks";
                 }
+            }
+            else
+            {
+                TempData["Erroor"] = "Please fill in the blanks";
             }
 
             return View(model);
@@ -75,9 +86,9 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Update(Cause model)
         {
-            if (model.ImageFile != null)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                if (model.ImageFile != null && model.Title != null && model.Content != null && model.CauseNeed != 0)
                 {
                     if (model.ImageFile.ContentType == "image/jpeg" || model.ImageFile.ContentType == "image/png")
                     {
@@ -105,10 +116,14 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
                         return View(model);
                     }
                 }
+                else
+                {
+                    TempData["Erroor"] = "Please fill in the blanks";
+                }
             }
             else
             {
-                return RedirectToAction("Update");
+                TempData["Erroor"] = "Please fill in the blanks";
             }
 
 
@@ -128,14 +143,15 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
             {
                 if (_appDbContext.Causes.Find(Id) != null)
                 {
-                    Cause cause = _appDbContext.Causes.Include(cg => cg.CauseGalleries).FirstOrDefault();
 
-                                                       // Include(mr => mr.MenuToRestourants)
-                                                       //.ThenInclude(m => m.Menu)
-                                                       //.Include(r => r.RestourantTagToRestourants).ThenInclude(rt => rt.RestourantTag)
-                                                       //.Include(rf => rf.RestourantFeatureToRestourants).ThenInclude(f => f.RestourantFeature)
-                                                       //.Include(rc => rc.RestourantComments).ThenInclude(cp => cp.CommentPost)
-                                                       //.Include(r => r.Reservations).ThenInclude(g => g.Guest).FirstOrDefault(r => r.Id == Id);
+                    Cause cause = _appDbContext.Causes.Include(cg => cg.CauseGalleries).FirstOrDefault(c => c.Id ==Id );
+
+                    // Include(mr => mr.MenuToRestourants)
+                    //.ThenInclude(m => m.Menu)
+                    //.Include(r => r.RestourantTagToRestourants).ThenInclude(rt => rt.RestourantTag)
+                    //.Include(rf => rf.RestourantFeatureToRestourants).ThenInclude(f => f.RestourantFeature)
+                    //.Include(rc => rc.RestourantComments).ThenInclude(cp => cp.CommentPost)
+                    //.Include(r => r.Reservations).ThenInclude(g => g.Guest).FirstOrDefault(r => r.Id == Id);
                     return View(cause);
                 }
                 else

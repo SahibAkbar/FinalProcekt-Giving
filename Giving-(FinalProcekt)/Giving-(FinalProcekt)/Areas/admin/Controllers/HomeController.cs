@@ -21,9 +21,13 @@ namespace DirectListt.Areas.admin.Controllers
         public IActionResult Index()
         {
             VmHome model = new VmHome();
+            ViewBag.DonateCount = _context.Donates.ToList().Count;
             ViewBag.CauseCount = _context.Causes.ToList().Count;
             ViewBag.EventCount = _context.Events.ToList().Count;
             ViewBag.VolunteerCount = _context.Volunteers.ToList().Count;
+            ViewBag.DonatePriceCount = _context.DonatePrices.Include(b => b.Priceee).ToList().Count;
+            model.Volunteers = _context.Volunteers.OrderByDescending(e => e.Name).Take(4).ToList();
+
 
             //var w = _context.DonatePrices.Include(d => d.Priceee).Where(c => c.CauseId == id).ToList();
             //var a = 0;
@@ -35,10 +39,10 @@ namespace DirectListt.Areas.admin.Controllers
             //ViewBag.total = a;
 
 
-            //return View(model);
+            ////return View(model);
             //ViewBag.DonateCount = _context.Donates.
-            //                                        Include(dp =>dp.DonatePrices)
-            //                                        .ThenInclude()
+            //                                        Include(dp => dp.DonatePrices)
+            //                                        .ThenInclude(dp =>dp.Priceee)
             //                                        .ToList().Count;
             return View(model);
         }

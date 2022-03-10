@@ -1,9 +1,15 @@
 ﻿@model CauseGallery
+@{ ViewData["Title"] = "Update";
+                Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml"; }
 @{
-    ViewData["Title"] = "Update";
-    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    if (TempData["Erroor"] != null)
+    {
+        <div class="col-lg-3 alert alert-danger">
+            <p>@(TempData["Erroor"]as string)</p>
+        </div>
+        TempData["Erroor"] = null;
+    }
 }
-
 <div class="container">
     <div class="row">
         <div class="col-lg-6">
@@ -19,8 +25,7 @@
                     <select class="js-example-basic-multiple" style="width:100%" multiple="multiple" asp-for="@Model.CauseId">
                         @foreach (var cause in ViewBag.Cause)
                         {
-                            <option value="@cause.Id">@cause.Title</option>
-                        }
+            <option value="@cause.Id">@cause.Title</option>}
                     </select>
                 </div>
                 <button type="submit" class="btn btn-success">Update</button>

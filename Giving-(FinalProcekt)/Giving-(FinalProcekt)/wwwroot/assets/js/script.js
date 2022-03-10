@@ -1,3 +1,5 @@
+
+
 $(".our-causes .owl-carousel").owlCarousel({
     loop: false,
     margin: 10,
@@ -128,47 +130,8 @@ $(document).ready(function() {
             verticalFit: true,
         },
     });
-
-    let submit = $("#sec-btn");
-    let email = $("#subscribies input[name='email']");
-    $("#sec-btn").click(function (e) {
-        e.preventDefault();
-        if (true) {
-            $.ajax({
-                url: Location.origin + "/Home/Subscribe",
-                type: "get",
-                dataType: "json",
-                data: {
-                    email: email.val()
-                },
-                success: function (response) {
-                    console.log(response)
-                    if (response.status1) {
-
-                        swal("Good job!", "Thanks for subscribing!", "success");
-                    }
-                    else if (!response.status1 && !response.status2) {
-
-                        swal("Hmmm!", "You are already subscribed!", "info");
-                    }
-
-                    if (response.status2) {
-
-                    }
-                },
-                error: function (error) {
-                    swal("Errrror!", "Warninng", "error");
-                },
-                complete: function () {
-
-                }
-            });
-        } else {
-            swal("Errooor!", "Please, write correct mail", "error");
-            $("#subscribies input[name='email']")[0].value = "";
-        }
-    });
 });
+
 
 // Accardion start
 
@@ -187,6 +150,9 @@ for (let i = 0; i < accordiontitle.length; i++) {
         accordion[i].classList.toggle("active");
     });
 }
+
+
+
 
 // Accardion end
 

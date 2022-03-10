@@ -73,9 +73,9 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Update(Setting model)
         {
-            if (model.LogoFile != null)
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                if (model.LogoFile != null && model.Email != null && model.Adress != null && model.Phone != null && model.IframeLink != null)
                 {
                     if (model.LogoFile.ContentType == "image/jpeg" || model.LogoFile.ContentType == "image/png")
                     {
@@ -103,10 +103,14 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
                         return View(model);
                     }
                 }
+                else
+                {
+                    TempData["Erroor"] = "Please fill in the blanks";
+                }
             }
             else
             {
-                return RedirectToAction("Update");
+                TempData["Erroor"] = "Please fill in the blanks";
             }
 
 

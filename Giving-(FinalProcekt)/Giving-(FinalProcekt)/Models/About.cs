@@ -18,10 +18,10 @@ namespace Giving__FinalProcekt_.Models
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(100),Required]
         public string Title { get; set; }
 
-        [MaxLength(500)]
+        [MaxLength(500),Required]
         public string SubTitle { get; set; }
 
     }

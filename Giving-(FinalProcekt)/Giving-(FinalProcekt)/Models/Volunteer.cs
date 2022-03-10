@@ -18,28 +18,28 @@ namespace Giving__FinalProcekt_.Models
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Name { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Position { get; set; }
 
-        [Column(TypeName ="ntext")]
+        [Column(TypeName ="ntext"),Required]
         public string Description { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Experience { get; set; }
 
-        [MaxLength(250)]
+        [MaxLength(250),Required]
         public string DonaterTitle { get; set; }
 
-        [MaxLength(250)]
+        [MaxLength(250),Required]
         public string DonaterCount { get; set; }
 
-        [MaxLength(250)]
+        [MaxLength(250),Required]
         public string VoluteerTitle { get; set; }
 
-        [MaxLength(250)]
+        [MaxLength(250),Required]
         public string VoluteerCount { get; set; }
 
     }

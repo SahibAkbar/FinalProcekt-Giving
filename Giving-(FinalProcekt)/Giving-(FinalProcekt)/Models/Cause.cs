@@ -18,13 +18,13 @@ namespace Giving__FinalProcekt_.Models
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Title  { get; set; }
 
-        [Column(TypeName ="ntext")]
+        [Column(TypeName ="ntext"),Required]
         public string Content { get; set; }
 
-        [MaxLength(250)]
+        [MaxLength(250),Required]
         public string Address { get; set; }
 
         public int CauseNeed { get; set; }

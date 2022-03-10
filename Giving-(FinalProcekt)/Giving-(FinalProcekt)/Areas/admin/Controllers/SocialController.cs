@@ -31,9 +31,20 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Socials.Add(model);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                if (model.Icon != null && model.Link != null)
+                {
+                    _context.Socials.Add(model);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Erroor"] = "Please fill in the blanks";
+                }
+            }
+            else
+            {
+                TempData["Erroor"] = "Please fill in the blanks";
             }
 
             return View(model);
@@ -49,9 +60,20 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Socials.Update(model);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                if (model.Icon != null && model.Link != null)
+                {
+                    _context.Socials.Update(model);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Erroor"] = "Please fill in the blanks";
+                }
+            }
+            else
+            {
+                TempData["Erroor"] = "Please fill in the blanks";
             }
 
             return View(model);

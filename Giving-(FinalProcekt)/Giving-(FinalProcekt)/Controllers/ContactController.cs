@@ -47,7 +47,7 @@ namespace Giving__FinalProcekt_.Controllers
             {
                 TempData["MessageError"] = "Please fill out all of the required fields correctly";
             }
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }

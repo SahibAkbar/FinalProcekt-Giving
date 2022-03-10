@@ -2,10 +2,20 @@
 @{ ViewData["Title"] = "Update";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml"; }
 
+@{
+    if (TempData["Erroor"] != null)
+    {
+        <div class="col-lg-3 alert alert-danger">
+            <p>@(TempData["Erroor"]as string)</p>
+        </div>
+        TempData["Erroor"] = null;
+    }
+}
+
 <div class="container">
     <div class="row my-5">
         <div class="col-lg-12 my-5">
-            <form asp-area="Admin" asp-controller="SiteSetting" asp-action="Update" method="post" enctype="multipart/form-data">
+            <form asp-area="Admin" asp-controller="Setting" asp-action="Update" method="post" enctype="multipart/form-data">
                 @{ if (TempData["SettingError"] != null)
                     {
         <p style="font-size: 20px !important;" class="alert alert-danger">@TempData["SettingError"]</p> TempData["SettingError"] = null;

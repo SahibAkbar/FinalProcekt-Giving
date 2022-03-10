@@ -13,13 +13,13 @@ namespace Giving__FinalProcekt_.Models
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Icon { get; set; }
 
-        [MaxLength(20)]
+        [MaxLength(20),Required]
         public string Title  { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(100),Required]
         public string Subtitle { get; set; }
 
     }

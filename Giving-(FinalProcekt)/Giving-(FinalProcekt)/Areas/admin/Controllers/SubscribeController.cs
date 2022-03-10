@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 namespace Giving__FinalProcekt_.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
-
     public class SubscribeController : Controller
     {
         private readonly AppDbContext _context;
@@ -22,18 +20,23 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
         {
             _context = context;
         }
-        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_context.Subscribes.ToList());
         }
-        [AllowAnonymous]
+
+        public IActionResult Delete(int id)
+        {
+            Subscribe subscribe = _context.Subscribes.Find(id);
+            _context.Subscribes.Remove(subscribe);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         public IActionResult SendMailAll()
         {
             return View(_context.Subscribes.ToList());
         }
-        [AllowAnonymous]
 
         [HttpPost]
         public IActionResult SendMailAll(string MailText)
@@ -43,7 +46,7 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
             foreach (var item in subscribes)
             {
                 MailMessage message = new MailMessage();
-                message.From = new MailAddress("codegroupsp@gmail.com", "Code Academy P222");
+                message.From = new MailAddress("codegroupsp@gmail.com", "Giving");
                 message.To.Add(item.Email);
                 message.Body = MailText;
                 message.IsBodyHtml = true;
@@ -56,6 +59,31 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
                 smtpClient.Credentials = new NetworkCredential("codegroupsp@gmail.com", "codegroupsp2021");
                 smtpClient.Send(message);
             }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult SendMail()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SendMail(string MailText, int? id)
+        {
+            Subscribe subscribe = _context.Subscribes.FirstOrDefault(p => p.Id == id);
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress("codegroupsp@gmail.com", "Giving");
+            message.To.Add(subscribe.Email);
+            message.Body = MailText;
+            message.IsBodyHtml = true;
+            message.Subject = "Communication";
+
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.EnableSsl = true;
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("codegroupsp@gmail.com", "codegroupsp2021");
+            smtpClient.Send(message);
 
             return RedirectToAction("Index");
         }

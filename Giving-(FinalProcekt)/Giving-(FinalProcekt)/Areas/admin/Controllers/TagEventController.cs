@@ -31,9 +31,20 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.TagEvents.Add(model);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                if (model.Name != null)
+                {
+                    _context.TagEvents.Add(model);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Erroor"] = "Please fill in the blanks";
+                }
+            }
+            else
+            {
+                TempData["Erroor"] = "Please fill in the blanks";
             }
 
             return View(model);
@@ -49,9 +60,20 @@ namespace Giving__FinalProcekt_.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.TagEvents.Update(model);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                if (model.Name != null)
+                {
+                    _context.TagEvents.Update(model);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Erroor"] = "Please fill in the blanks";
+                }
+            }
+            else
+            {
+                TempData["Erroor"] = "Please fill in the blanks";
             }
 
             return View(model);

@@ -34,7 +34,7 @@
                         <td style="text-align:center">@Model[i - 1].Email</td>
                         <td style="text-align:center">@Model[i - 1].Phone</td>
                         <td style="text-align:center">@Model[i - 1].Address</td>
-                        <td style="text-align:center">@Model[i - 1].Not</td>
+                        <td style="text-align:center">@(Model[i - 1].Not != null && Model[i - 1].Not.Length > 30 ? Model[i - 1].Not.Substring(0, 30) + "..." : Model[i - 1].Not)</td>
                         <td data-field="" class="datatable-cell">
                             <span style="width: 146px;">
                                 @{

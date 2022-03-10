@@ -12,12 +12,13 @@
                 <a class="btn btn-primary mb-3 px-5" asp-area="Admin" asp-controller="Cause" asp-action="Create">Create New <i class="fas fa-plus"></i></a>
                 @{ if (TempData["CauseError"] != null)
                     {
-            <p style="font-size: 20px !important;" class="alert alert-danger">@TempData["CauseError"]</p> TempData["CauseError"] = null;
-    }
-    if (TempData["CauseError1"] != null)
-    {
-<p style="font-size: 20px !important;" class="alert alert-danger">@TempData["CauseError1"]</p> TempData["CauseError1"] = null;
-} }
+                        <p style="font-size: 20px !important;" class="alert alert-danger">@TempData["CauseError"]</p> TempData["CauseError"] = null;
+                    }
+                    if (TempData["CauseError1"] != null)
+                    {
+                        <p style="font-size: 20px !important;" class="alert alert-danger">@TempData["CauseError1"]</p> TempData["CauseError1"] = null;
+                    } 
+                 }
                 <div class="table-responsive">
                     <table class="table table-bordered text-center">
                         <thead>

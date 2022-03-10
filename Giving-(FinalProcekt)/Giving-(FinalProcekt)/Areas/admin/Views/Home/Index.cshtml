@@ -8,9 +8,9 @@
         <div class="col-lg-3 col-sm-6">
             <div class="card gradient-1">
                 <div class="card-body">
-                    <h3 class="card-title text-white">Added Events</h3>
+                    <h3 class="card-title text-white">Events List</h3>
                     <div class="d-inline-block">
-                        <h2 class="text-white">@ViewBag.CauseCount</h2>
+                        <h2 class="text-white">@ViewBag.EventCount</h2>
                         <p class="text-white mb-0">@DateTime.Now.ToString("MMM-dd, yyyy")</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fas fa-calendar-plus"></i></span>
@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <h3 class="card-title text-white">Donate People</h3>
                     <div class="d-inline-block">
-                        <h2 class="text-white">$ @ViewBag.DonateCount</h2>
+                        <h2 class="text-white">@ViewBag.DonateCount</h2>
                         <p class="text-white mb-0">@DateTime.Now.ToString("MMM-dd, yyyy")</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
@@ -32,24 +32,24 @@
         <div class="col-lg-3 col-sm-6">
             <div class="card gradient-3">
                 <div class="card-body">
-                    <h3 class="card-title text-white">New Customers</h3>
+                    <h3 class="card-title text-white">Team List</h3>
                     <div class="d-inline-block">
-                        <h2 class="text-white">4565</h2>
-                        <p class="text-white mb-0">Jan - March 2019</p>
+                        <h2 class="text-white">@ViewBag.VolunteerCount</h2>
+                        <p class="text-white mb-0">@DateTime.Now.ToString("MMM-dd, yyyy")</p>
                     </div>
                     <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-sm-6">
-            <div class="card gradient-4">
+            <div class="card gradient-4" style="background-image: linear-gradient(230deg, #a00303, #816aff);">
                 <div class="card-body">
-                    <h3 class="card-title text-white">Customer Satisfaction</h3>
+                    <h3 class="card-title text-white">Causes List</h3>
                     <div class="d-inline-block">
-                        <h2 class="text-white">99%</h2>
-                        <p class="text-white mb-0">Jan - March 2019</p>
+                        <h2 class="text-white">@ViewBag.CauseCount</h2>
+                        <p class="text-white mb-0">@DateTime.Now.ToString("MMM-dd, yyyy")</p>
                     </div>
-                    <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+                    <span class="float-right display-5 opacity-5"><i class="fas fa-ribbon"></i></span>
                 </div>
             </div>
         </div>
@@ -173,15 +173,31 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-3 col-sm-6">
+        @foreach (var item in Model.Volunteers)
+        {
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="card-body"  style="height:400px;">
+                        <div class="text-center">
+                            <img src="~/Uploads/@item.Image" style="max-width:100%;border-radius:0;height:100%;" alt="">
+                            <h5 class="mt-3 mb-1">@item.Name</h5>
+                            <p class="m-0">@item.Position</p>
+                            <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+        <!--<div class="col-lg-3 col-sm-6">
             <div class="card">
                 <div class="card-body">
                     <div class="text-center">
                         <img src="./images/users/8.jpg" class="rounded-circle" alt="">
                         <h5 class="mt-3 mb-1">Ana Liem</h5>
-                        <p class="m-0">Senior Manager</p>
+                        <p class="m-0">Senior Manager</p>-->
                         <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
+                    <!--</div>
                 </div>
             </div>
         </div>
@@ -191,9 +207,9 @@
                     <div class="text-center">
                         <img src="./images/users/5.jpg" class="rounded-circle" alt="">
                         <h5 class="mt-3 mb-1">John Abraham</h5>
-                        <p class="m-0">Store Manager</p>
+                        <p class="m-0">Store Manager</p>-->
                         <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
+                    <!--</div>
                 </div>
             </div>
         </div>
@@ -203,9 +219,9 @@
                     <div class="text-center">
                         <img src="./images/users/7.jpg" class="rounded-circle" alt="">
                         <h5 class="mt-3 mb-1">John Doe</h5>
-                        <p class="m-0">Sales Man</p>
+                        <p class="m-0">Sales Man</p>-->
                         <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
+                    <!--</div>
                 </div>
             </div>
         </div>
@@ -215,12 +231,12 @@
                     <div class="text-center">
                         <img src="./images/users/1.jpg" class="rounded-circle" alt="">
                         <h5 class="mt-3 mb-1">Mehedi Titas</h5>
-                        <p class="m-0">Online Marketer</p>
+                        <p class="m-0">Online Marketer</p>-->
                         <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
+                    <!--</div>
                 </div>
             </div>
-        </div>
+        </div>--> 
 
     </div>
 

@@ -1,7 +1,14 @@
 ﻿@model Banner
+@{ ViewData["Title"] = "Update";
+                Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml"; }
 @{
-    ViewData["Title"] = "Update";
-    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+    if (TempData["Erroor"] != null)
+    {
+        <div class="col-lg-3 alert alert-danger">
+            <p>@(TempData["Erroor"]as string)</p>
+        </div>
+        TempData["Erroor"] = null;
+    }
 }
 
 <div class="container">

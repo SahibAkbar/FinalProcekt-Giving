@@ -1,41 +1,63 @@
 ﻿@model List<AboutOption>
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
-}
+@{ ViewData["Title"] = "Index";
+                Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml"; }
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="admin" asp-controller="AboutOption" asp-action="Create">Create</a>
-        </div>
-        <div class="col-lg-12">
-            <table class="table">
-                <thead style="text-align:center;">
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Icon</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">SubTitle</th>
-                        <th scope="col"><i class="icon-note menu-icon"></i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 1; i < Model.Count + 1; i++)
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center" style="font-size: 35px !important; font-weight: 600 !important; color: #3b579d !important; ">AboutOption</h4>
+                <a class="btn btn-primary mb-3 px-5" asp-area="Admin" asp-controller="AboutOption" asp-action="Create">Create New <i class="fas fa-plus"></i></a>
+                @{ if (TempData["CauseError"] != null)
                     {
-                        <tr>
-                            <th style="vertical-align:middle;" scope="row">@i</th>
-                            <td>@Model[i-1].Icon</td>
-                            <td>@Model[i - 1].Title</td>
-                            <td>@Model[i - 1].Subtitle</td>
-                            <td>
-                                <a class="btn btn-success mb-1" asp-area="admin" asp-controller="AboutOption" asp-action="Update" asp-route-id="@Model[i-1].Id">Update</a>
-                                <a class="btn btn-danger" asp-area="admin" asp-controller="AboutOption" asp-action="Delete" asp-route-id="@Model[i-1].Id" onclick="return confirm('Are you sure?')">Delete</a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+        <p style="font-size: 20px !important;" class="alert alert-danger">@TempData["CauseError"]</p> TempData["CauseError"] = null;
+    }
+    if (TempData["CauseError1"] != null)
+    {
+<p style="font-size: 20px !important;" class="alert alert-danger">@TempData["CauseError1"]</p> TempData["CauseError1"] = null;
+} }
+                <div class="table-responsive">
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Icon</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">SubTitle</th>
+                                <th scope="col"><i class="icon-note menu-icon"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ int counter = 0;
+                                foreach (var item in Model)
+                                {
+                                    counter++;
+                    <tr>
+                        <td style="font-size: 18px !important; font-weight: 500 !important;">
+                            @counter
+                        </td>
+                        <td style="font-size: 40px !important; width: 350px; font-weight: 500 !important;">
+                            <i class="@item.Icon"></i>
+                        </td>
+                        <td style="width: 150px !important; font-size: 16px !important; font-weight: 500 !important;">
+                            @item.Title
+                        </td>
+                        <td style="width: 450px !important; font-size: 16px !important; font-weight: 500 !important;">
+                            @item.Subtitle
+                        </td>
+                        <td style="width: 150px;">
+                            <a class="my-2 w-100 btn-sm btn btn-warning" asp-route-id="@item.Id" asp-area="Admin" asp-controller="AboutOption" asp-action="Update"><i class="fas fa-edit"></i></a>
+                            <br>
+                            <a class="w-100 btn-sm btn btn-danger" asp-route-id="@item.Id" asp-area="Admin" asp-controller="AboutOption" asp-action="Delete" onclick="return confirm('Are you sure?')"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+ } }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

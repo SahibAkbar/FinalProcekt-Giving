@@ -13,7 +13,7 @@ namespace Giving__FinalProcekt_.Models
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Name  { get; set; }
 
         public List<TagToEvent> TagToEvents { get; set; }

@@ -83,27 +83,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="content">
-                        <div class="inner">
-                            <div class="wraper">
-                                <div class="const">
-                                    <h3>Become our organization <em>MEMBER</em><br>and help people for their needs</h3>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                    </p>
+                    <div class="u-fade-type-left js-scroll-trigger">
+                        <div class="content">
+                            <div class="inner">
+                                <div class="wraper">
+                                    <div class="const">
+                                        <h3>@Model.About.Title</h3>
+                                        <p>
+                                            @Model.About.SubTitle
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="button">
+                                    <a asp-controller="About" asp-action="Index" asp-route-id="@Model.About.Id">Read More</a>
                                 </div>
                             </div>
-                            <div class="button">
-                                <a href="#">Read More</a>
-                            </div>
                         </div>
+
                     </div>
+
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="memmber-image">
-                        <img src="assets/img/Orgonozition Memmber/home.png" alt="">
+                    <div class="u-fade-type-right js-scroll-trigger">
+                        <div class="memmber-image">
+                            <img src="~/Uploads/@Model.About.Image" alt="">
+                        </div>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
@@ -113,222 +120,65 @@
 <!-- Our Causes Start -->
 <section>
     <div class="our-causes">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h3>OUR <em>CAUSES</em></h3>
-                </div>
-                <div class="col-sm-12">
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="post">
-                                <img src="assets/img/Causes/2.jpg" alt="">
-                                <div class="datetime">
-                                    <span class="datetime-inner">
-                                        <span class="date">
-                                            13 <small>th</small>
-                                        </span>
-                                        <span class="month">Mar</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="post-header">
-                                <div class="meta">
-                                    <ul class="archive">
-                                        <li class="view">
-                                            <i class="far fa-eye"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="heart">
-                                            <i class="far fa-heart"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="comment">
-                                            <i class="far fa-comment"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="author">
-                                            Written by <a href="#">admin</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h1 class="title">
-                                    <a href="#">Big night walk</a>
-                                </h1>
-                            </div>
-                            <div class="post-content">
-                                <p>It will be an experience like no other. Starting off in central London at St…</p>
-                            </div>
-                            <a class="post-btn" href="#">Read more...</a>
-                        </div>
-                        <div class="item">
-                            <div class="post">
-                                <img src="assets/img/Causes/1.jpg" alt="">
-                                <div class="datetime">
-                                    <span class="datetime-inner">
-                                        <span class="date">
-                                            13 <small>th</small>
-                                        </span>
-                                        <span class="month">Mar</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="post-header">
-                                <div class="meta">
-                                    <ul class="archive">
-                                        <li class="view">
-                                            <i class="far fa-eye"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="heart">
-                                            <i class="far fa-heart"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="comment">
-                                            <i class="far fa-comment"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="author">
-                                            Written by <a href="#">admin</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h1 class="title">
-                                    <a href="#">Rice for life</a>
-                                </h1>
-                            </div>
-                            <div class="post-content">
-                                <p>If you are representing an organisation or a group of volunteers, please discuss the size… </p>
-                            </div>
-                            <a class="post-btn" href="#">Read more...</a>
-                        </div>
-                        <div class="item">
-                            <div class="post">
-                                <img src="assets/img/Causes/3.jpg" alt="">
-                                <div class="datetime">
-                                    <span class="datetime-inner">
-                                        <span class="date">
-                                            13 <small>th</small>
-                                        </span>
-                                        <span class="month">Mar</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="post-header">
-                                <div class="meta">
-                                    <ul class="archive">
-                                        <li class="view">
-                                            <i class="far fa-eye"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="heart">
-                                            <i class="far fa-heart"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="comment">
-                                            <i class="far fa-comment"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="author">
-                                            Written by <a href="#">admin</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h1 class="title">
-                                    <a href="#">Heart to heart</a>
-                                </h1>
-                            </div>
-                            <div class="post-content">
-                                <p>Heart to Heart is a gathering of wives, mothers, sisters, daughters, and best friends for a… </p>
-                            </div>
-                            <a class="post-btn" href="#">Read more...</a>
-                        </div>
-                        <div class="item">
-                            <div class="post">
-                                <img src="assets/img/Causes/4.jpg" alt="">
-                                <div class="datetime">
-                                    <span class="datetime-inner">
-                                        <span class="date">
-                                            13 <small>th</small>
-                                        </span>
-                                        <span class="month">Mar</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="post-header">
-                                <div class="meta">
-                                    <ul class="archive">
-                                        <li class="view">
-                                            <i class="far fa-eye"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="heart">
-                                            <i class="far fa-heart"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="comment">
-                                            <i class="far fa-comment"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="author">
-                                            Written by <a href="#">admin</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h1 class="title">
-                                    <a href="#">Back to school</a>
-                                </h1>
-                            </div>
-                            <div class="post-content">
-                                <p>Our primary mission is essential and clear-cut: To provide a full range of high-quality health…</p>
-                            </div>
-                            <a class="post-btn" href="#">Read more...</a>
-                        </div>
-                        <div class="item">
-                            <div class="post">
-                                <img src="assets/img/Causes/5.jpg" alt="">
-                                <div class="datetime">
-                                    <span class="datetime-inner">
-                                        <span class="date">
-                                            13 <small>th</small>
-                                        </span>
-                                        <span class="month">Mar</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="post-header">
-                                <div class="meta">
-                                    <ul class="archive">
-                                        <li class="view">
-                                            <i class="far fa-eye"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="heart">
-                                            <i class="far fa-heart"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="comment">
-                                            <i class="far fa-comment"></i>
-                                            <span>0</span>
-                                        </li>
-                                        <li class="author">
-                                            Written by <a href="#">admin</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h1 class="title">
-                                    <a href="#">Mini fundraiser</a>
-                                </h1>
-                            </div>
-                            <div class="post-content">
-                                <p>You will need to arrange a place to play and that’s best done well in…</p>
-                            </div>
-                            <a class="post-btn" href="#">Read more...</a>
+        <div class="u-fade-type-down js-scroll-trigger">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>OUR <em>CAUSES</em></h3>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="owl-carousel owl-theme">
+                            @{
+                                foreach (var item in Model.Causes)
+                                {
+                                    <div class="item" style=" max-width: 100%">
+                                        <div class="post">
+                                            <img style=" height: 235px; object-fit: cover;" src="~/Uploads/@item.Image" alt="">
+                                            <div class="datetime">
+                                                <span class="datetime-inner">
+                                                    @item.CreatedDate.ToString("dd / MMM")
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="post-header">
+                                            @*<div class="meta">
+                                                <ul class="archive">
+                                                    <li class="view">
+                                                        <i class="far fa-eye"></i>
+                                                        <span>0</span>
+                                                    </li>
+                                                    <li class="heart">
+                                                        <i class="far fa-heart"></i>
+                                                        <span>0</span>
+                                                    </li>
+                                                    <li class="comment">
+                                                        <i class="far fa-comment"></i>
+                                                        <span>0</span>
+                                                    </li>
+                                                    <li class="author">
+                                                        Written by <a href="#">admin</a>
+                                                    </li>
+                                                </ul>
+                                            </div>*@
+                                            <h1 class="title">
+                                                <a asp-controller="Causes" asp-action="Detail" asp-route-id="@item.Id">@(item.Title!= null && item.Title.Length > 21 ? item.Title.Substring(0, 21) + "..." : item.Title)</a>
+                                            </h1>
+                                        </div>
+                                        <div class="post-content">
+                                            <p>@(item.Content!= null && item.Content.Length > 121 ? item.Content.Substring(0, 121) + "..." : item.Content)</p>
+                                        </div>
+                                        <a class="post-btn" asp-controller="Causes" asp-action="Detail" asp-route-id="@item.Id">Read more...</a>
+                                    </div>
+
+                                }
+                            }
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
     </div>
 
 
@@ -341,7 +191,7 @@
             <div class="wpb-wraper">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 left">
+                        <div class="col-md-6 left u-fade-type-left js-scroll-trigger">
                             <div class="content">
                                 <h3>Heart to heart</h3>
                                 <p>Heart to Heart is a gathering of wives, mothers, sisters, daughters, and best friends for a luncheon and</p>
@@ -356,7 +206,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 right">
+                        <div class="col-md-6 right u-fade-type-right js-scroll-trigger">
                             <img src="assets/img/slider/heart-in-handphoto-500x297.jpg" alt="">
                         </div>
                     </div>
@@ -372,71 +222,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="content">
-                        <h3 class="title-h">OUR <em>VOLUNTEERS</em></h3>
+                    <div class="content u-fade-type-up js-scroll-trigger">
+                        <h3 class="title-h">OUR <em>TEAM</em></h3>
                         <p class="title-p">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-                        <a href="#">Become a volunteer</a>
+                        <a asp-controller="Team" asp-action="Index">Go to the team</a>
                     </div>
-                    <div class="team">
+                    <div class="team u-fade-type-down js-scroll-trigger">
                         <div class="container">
                             <div class="row">
-                                <div class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="volunteer-inner">
-                                        <div class="thumb-wrap">
-                                            <img src="assets/img/Team/1.png" alt="">
-                                            <div class="ciricle-wrap">
-                                                <div class="ciricle-inner">
-                                                    <div class="pos-rev">
-                                                        <span>18</span> years exp
+                                @{
+                                    foreach (var item in Model.Volunteers)
+                                    {
+                                        <div class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="volunteer-inner">
+                                                <div class="thumb-wrap">
+                                                    <img src="~/Uploads/@item.Image" alt="">
+                                                    <div class="ciricle-wrap">
+                                                        <div class="ciricle-inner">
+                                                            <div class="pos-rev">
+                                                                <span>@item.Experience</span> years exp
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                </div>
+                                                <div class="intro-wrap">
+                                                    <h3>@item.Name</h3>
+                                                    <p>@item.Position</p>
+                                                    <a asp-controller="Team" asp-action="Detail" asp-route-id="@item.Id">View profile</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="intro-wrap">
-                                            <h3>John <span>Doe</span></h3>
-                                            <p>Head volunteer</p>
-                                            <a href="#">View profile</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="volunteer-inner">
-                                        <div class="thumb-wrap">
-                                            <img src="assets/img/Team/2.png" alt="">
-                                            <div class="ciricle-wrap">
-                                                <div class="ciricle-inner">
-                                                    <div class="pos-rev">
-                                                        <span>10</span> years exp
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="intro-wrap">
-                                            <h3>Mary <span>Doe</span></h3>
-                                            <p>Head volunteer</p>
-                                            <a href="#">View profile</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="volunteer-inner">
-                                        <div class="thumb-wrap">
-                                            <img src="assets/img/Team/3.png" alt="">
-                                            <div class="ciricle-wrap">
-                                                <div class="ciricle-inner">
-                                                    <div class="pos-rev">
-                                                        <span>10</span> years exp
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="intro-wrap">
-                                            <h3>Jenny <span>Simpson</span></h3>
-                                            <p>Head volunteer</p>
-                                            <a href="#">View profile</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                    }
+                                }
                             </div>
                         </div>
                     </div>
@@ -452,31 +269,46 @@
         <div class="vc-help">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-7 col-sm-12 col-md-7">
+                    <div class="col-lg-7 col-sm-12 col-md-7  u-fade-type-right js-scroll-trigger ">
                         <div class="content">
                             <h2>They <br> <b>NEED</b> <br>your <br><em><b>HELP...</b></em></h2>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-sm-12 col-md-5">
-                        <div class="form-help">
-                            <div class="mb-3">
-                                <input type="text" class="form-control brd" id="exampleFormControlInput1" placeholder="name">
+                    <div class="col-lg-5 col-sm-12 col-md-5 u-fade-type-left js-scroll-trigger">
+                        @{
+                            if (TempData["MessageError"] != null)
+                            {
+                                <p style="font-size: 20px !important;" class="alert alert-danger text-danger text-center">@TempData["MessageError"]</p>
+                                TempData["MessageError"] = null;
+                            }
+                            if (TempData["MessageSuccess"] != null)
+                            {
+                                <p style="font-size: 20px !important; background-color: #abd47459 !important; margin-left: 69px;" class="alert alert-success text-success text-center">@TempData["MessageSuccess"]</p>
+                                TempData["MessageSuccess"] = null;
+                            }
+                        }
+                        <form asp-controller="Home" asp-action="SendMessage" method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-help">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control brd" id="exampleFormControlInput1" placeholder="name" asp-for="@Model.Contact.Name">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email" asp-for="@Model.Contact.Email">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="phone" asp-for="@Model.Contact.Phone">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="message" asp-for="@Model.Contact.Message"></textarea>
+                                </div>
+                                <div class="col-md-12" style="text-align: end;">
+                                    <a href="#">
+                                        <input class="btn btn-primary" type="submit" value="Send Now">
+                                    </a>
+                                </div>
                             </div>
-                            <div class="mb-3">
-                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email">
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="phone">
-                            </div>
-                            <div class="mb-3">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="message"></textarea>
-                            </div>
-                            <div class="col-md-12" style="text-align: end;">
-                                <a href="#">
-                                    <input class="btn btn-primary" type="submit" value="Send Now">
-                                </a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

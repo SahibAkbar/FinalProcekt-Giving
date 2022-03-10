@@ -27,6 +27,7 @@ namespace Giving__FinalProcekt_.Controllers
 
                 var a2 = _context.Prices.Find(vmDonate.PriceId).Money;
                 //cause2.CreatedDate = DateTime.Now;
+                vmDonate.Donate.CreatedDate = DateTime.Now;
 
                 if (cause2.CauseNeed-a2>0||cause2.CauseNeed-a2==0)
                 {
@@ -37,6 +38,7 @@ namespace Giving__FinalProcekt_.Controllers
                     donate.Phone = vmDonate.Donate.Phone;
                     donate.Not = vmDonate.Donate.Not;
                     donate.Email = vmDonate.Donate.Email;
+                    donate.CreatedDate = vmDonate.Donate.CreatedDate;
 
 
                     _context.Donates.Add(donate);
@@ -60,7 +62,7 @@ namespace Giving__FinalProcekt_.Controllers
                     _context.Causes.Update(cause);
                     _context.SaveChanges();
 
-                    TempData["DonateSuccess"] = "Perfect!";
+                    TempData["DonateSuccess"] = "You Donate Successfully!";
 
                     return RedirectToAction("Detail", "Causes", new { Id = vmDonate.CauseId });
                 }
@@ -73,7 +75,7 @@ namespace Giving__FinalProcekt_.Controllers
 
                 
             }
-            return View();
+            return RedirectToAction();
         }
 
 

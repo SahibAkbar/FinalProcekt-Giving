@@ -217,3 +217,4 @@ C:\Users\Sahib\Desktop\Giving-(FinalProcekt)\Giving-(FinalProcekt)\obj\Debug\net
 C:\Users\Sahib\Desktop\Giving-(FinalProcekt)\Giving-(FinalProcekt)\obj\Debug\net5.0\Razor\Areas\admin\Views\Donate\Detail.cshtml.g.cs
 C:\Users\Sahib\Desktop\Giving-(FinalProcekt)\Giving-(FinalProcekt)\obj\Debug\net5.0\Razor\Areas\admin\Views\Message\Read.cshtml.g.cs
 C:\Users\Sahib\Desktop\Giving-(FinalProcekt)\Giving-(FinalProcekt)\obj\Debug\net5.0\Razor\Areas\admin\Views\Cause\Detail.cshtml.g.cs
+C:\Users\Sahib\Desktop\Giving-(FinalProcekt)\Giving-(FinalProcekt)\obj\Debug\net5.0\Razor\Areas\admin\Views\Subscribe\SendMail.cshtml.g.cs

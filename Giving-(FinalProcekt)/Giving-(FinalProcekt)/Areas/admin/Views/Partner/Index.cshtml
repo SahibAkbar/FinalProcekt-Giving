@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <a class="btn btn-primary mb-3" asp-area="admin" asp-controller="Partner" asp-action="Create">Create</a>
+            <a class="btn btn-whatsapp mb-3" asp-area="admin" asp-controller="Partner" asp-action="Create">Create</a>
         </div>
         <div class="col-lg-12">
             <table class="table">
@@ -23,10 +23,10 @@
                     {
                     <tr>
                         <th scope="row" style="vertical-align:middle;">@i</th>
-                        <td><img src="~/Uploads/@Model[i - 1].Image" style="width: 100px" alt="Alternate Text" /></td>
-                        <td>
-                            <a class="btn btn-success" asp-area="admin" asp-controller="Partner" asp-action="Update" asp-route-id="@Model[i - 1].Id">Update</a>
-                            <a class="btn btn-danger" asp-area="admin" asp-controller="Partner" asp-action="Delete" asp-route-id="@Model[i - 1].Id" onclick="return confirm('Are you sure?')">Delete</a>
+                        <td style="text-align:center;"><img src="~/Uploads/@Model[i - 1].Image" style="width: 100px" alt="Alternate Text" /></td>
+                        <td style="text-align: center;">
+                            <a class="btn btn-warning" asp-area="admin" asp-controller="Partner" asp-action="Update" asp-route-id="@Model[i - 1].Id"><i class="fas fa-edit"></i></a>
+                            <a class="btn btn-danger" asp-area="admin" asp-controller="Partner" asp-action="Delete" asp-route-id="@Model[i - 1].Id" onclick="return confirm('Are you sure?')"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     }

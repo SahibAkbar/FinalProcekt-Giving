@@ -12,12 +12,13 @@ namespace Giving__FinalProcekt_.Models
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(60)]
+        [MaxLength(60),Required]
         public string Name { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Email { get; set; }
 
+        [Required]
         public string Content { get; set; }
 
         [NotMapped]

@@ -7,8 +7,7 @@ namespace Giving__FinalProcekt_.ViewModel
 {
     public class VmSubscribe
     {
-        public bool Status1 { get; set; }
-
-        public bool Status2 { get; set; }
+        public bool Status { get; set; }
+        public string Message { get; set; }
     }
 }

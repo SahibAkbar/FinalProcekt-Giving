@@ -12,13 +12,10 @@ namespace Giving__FinalProcekt_.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
         public string Content { get; set; }
-
         public DateTime CreatedDate { get; set; }
-
-
-
-
         [ForeignKey("ParentComment")]
         public int? ParentCommentId { get; set; }
         public Comment1 ParentComment { get; set; }

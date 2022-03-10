@@ -18,5 +18,6 @@ namespace Giving__FinalProcekt_.ViewModel
         public Comment1 Comment { get; set; }
         public CommentPost1 CommentPost { get; set; }
         public VmDonate VmDonate { get; set; }
+        public VmSearch vmSearch { get; set; }
     }
 }

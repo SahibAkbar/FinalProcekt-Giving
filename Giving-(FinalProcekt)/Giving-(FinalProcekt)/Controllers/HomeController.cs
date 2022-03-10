@@ -29,49 +29,95 @@ namespace Giving__FinalProcekt_.Controllers
             model.HappyFaces = _context.HappyFaces.ToList();
             model.Socials = _context.Socials.ToList();
             model.HomeSliders = _context.HomeSliders.ToList();
-
+            model.About = _context.Abouts.FirstOrDefault();
             model.Cause = _context.Causes.FirstOrDefault();
-            model.Causes = _context.Causes.ToList();
-            model.Volunteer = _context.Volunteers.FirstOrDefault();
-            model.Volunteers = _context.Volunteers.ToList();
-            model.Contact = _context.Contacts.FirstOrDefault();
+            model.Causes = _context.Causes.OrderByDescending(e => e.CreatedDate).Take(5).ToList();
+            model.Volunteers = _context.Volunteers.OrderByDescending(e => e.Name).Take(3).ToList();
 
             return View(model);
+        }
+        [HttpPost]
+        public IActionResult SendMessage(VmHome model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Contact.CreatedDate = DateTime.Now;
+                _context.Contacts.Add(model.Contact);
+                //HttpContext.Session.SetString("Success", "Your message has been sent successfully!");
+                TempData["MessageSuccess"] = "Your message has been sent successfully";
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["MessageError"] = "Please fill out all of the required fields correctly";
+            }
+            return View("Index");
         }
 
 
 
+        //public IActionResult Subscribe(string email)
+        //{
+        //    VmSubscribe response = new VmSubscribe();
+
+        //    if (!string.IsNullOrEmpty(email))
+        //    {
+        //        if (_context.Subscribes.Any(s => s.Email == email))
+        //        {
+        //            response.Status1 = false;
+        //            return Json(response);
+        //        }
+        //        else
+        //        {
+        //            response.Status1 = true;
+        //            Subscribe subscribe = new();
+        //            subscribe.CreatedDate = DateTime.Now;
+        //            subscribe.Email = email;
+
+        //            _context.Subscribes.Add(subscribe);
+        //            _context.SaveChanges();
+
+        //            return Json(response);
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        response.Status2 = true;
+        //        return Json(response);
+        //    }
+        //}
 
         public IActionResult Subscribe(string email)
         {
             VmSubscribe response = new VmSubscribe();
 
-            if (!string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(email))
             {
-                if (_context.Subscribes.Any(s => s.Email == email))
-                {
-                    response.Status1 = false;
-                    return Json(response);
-                }
-                else
-                {
-                    response.Status1 = true;
-                    Subscribe subscribe = new();
-                    subscribe.CreatedDate = DateTime.Now;
-                    subscribe.Email = email;
-
-                    _context.Subscribes.Add(subscribe);
-                    _context.SaveChanges();
-
-                    return Json(response);
-
-                }
-            }
-            else
-            {
-                response.Status2 = true;
+                response.Status = false;
+                response.Message = "Subscribtion failed! You must enter your email";
                 return Json(response);
             }
+
+            bool isExist = _context.Subscribes.Any(s => s.Email == email);
+
+            if (isExist)
+            {
+                response.Status = false;
+                response.Message = "Your email have already subscribed!";
+                return Json(response);
+            }
+
+            Subscribe subscribe = new Subscribe();
+            subscribe.CreatedDate = DateTime.Now;
+            subscribe.Email = email;
+            _context.Subscribes.Add(subscribe);
+            _context.SaveChanges();
+
+            response.Status = true;
+            response.Message = "Your subscribe successfully!";
+            return Json(response);
         }
     }
 }

@@ -10,5 +10,6 @@ namespace Giving__FinalProcekt_.ViewModel
     {
         public Contact Contact { get; set; }
         public Banner Banner { get; set; }
+
     }
 }

@@ -27,6 +27,7 @@
                             <td>@Model[i - 1].CreatedDate.ToString("dd.MM.yyyy")</td>
                             <td>
                                 <a class="btn btn-danger" asp-area="admin" asp-controller="Subscribe" asp-action="Delete" asp-route-id="@Model[i - 1].Id" onclick="return confirm('Are you sure?')">Delete</a>
+                                <a class="btn btn-warning" asp-area="admin" asp-controller="Subscribe" asp-action="SendMail" asp-route-id="@Model[i-1].Id">Send Mail</a>
                             </td>
                         </tr>
                     }

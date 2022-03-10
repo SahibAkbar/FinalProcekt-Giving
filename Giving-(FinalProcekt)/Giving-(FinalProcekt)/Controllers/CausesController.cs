@@ -43,12 +43,14 @@ namespace Giving__FinalProcekt_.Controllers
             model.CauseGalleries = _context.CauseGalleries.ToList();
             model.Comment = _context.Comments.FirstOrDefault();
             model.Comments = _context.Comments.ToList();
+            ViewBag.AllCount = _context.Causes.ToList().Count;
 
             return View(model);
         }
     
-        public IActionResult Detail(int? id)
+        public IActionResult Detail(int? id,VmSearch search)
         {
+
             if (id != null)
             {
                 VmCauses model = new();
@@ -72,13 +74,26 @@ namespace Giving__FinalProcekt_.Controllers
                     model.Subscribe = _context.Subscribes.FirstOrDefault();
                     model.Cause = _context.Causes
                                              .Include(c => c.Comments)
-                                             .ThenInclude(cp => cp.CommentPost).FirstOrDefault(p => p.Id == id);
+                                             .ThenInclude(cp => cp.CommentPost)
+                                             .FirstOrDefault(p => p.Id == id);
+
+                 
+
+                    ViewBag.PageCount = _context.Causes.ToList().Count;
                     return View(model);
 
+                }
+                else
+                {
+                    TempData["Erroor"] = "Please fill in the blanks";
                 }
 
                 return RedirectToAction("Index");
 
+            }
+            else
+            {
+                TempData["Erroor"] = "Please fill in the blanks";
             }
             return RedirectToAction("Index");
         }
@@ -105,6 +120,10 @@ namespace Giving__FinalProcekt_.Controllers
                 _context.SaveChanges();
 
 
+            }
+            else
+            {
+                TempData["Erroor"] = "Please fill in the blanks";
             }
 
             return RedirectToAction("Detail", new { Id = commentPost.CauseId });

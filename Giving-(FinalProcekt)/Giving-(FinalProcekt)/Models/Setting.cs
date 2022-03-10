@@ -18,16 +18,16 @@ namespace Giving__FinalProcekt_.Models
         [NotMapped]
         public IFormFile LogoFile { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Email { get; set; }
 
-        [MaxLength(50)]
+        [MaxLength(50),Required]
         public string Phone { get; set; }
 
-        [MaxLength(250)]
+        [MaxLength(250),Required]
         public string Adress { get; set; }
 
-        [MaxLength(1000)]
+        [MaxLength(1000),Required]
         public string IframeLink { get; set; }
     }
 }

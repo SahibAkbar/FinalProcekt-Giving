@@ -8,5 +8,6 @@ namespace Giving__FinalProcekt_.ViewModel
     public class VmSearch
     {
         public int? tagId { get; set; }
+        public int? page { get; set; }
     }
 }
