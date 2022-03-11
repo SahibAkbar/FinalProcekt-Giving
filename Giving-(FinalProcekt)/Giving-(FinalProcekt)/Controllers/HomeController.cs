@@ -2,6 +2,7 @@
 using Giving__FinalProcekt_.Models;
 using Giving__FinalProcekt_.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,9 @@ namespace Giving__FinalProcekt_.Controllers
         {
             _context = context;
         }
+
+
+        //Home sections
         
         public IActionResult Index()
         {
@@ -30,12 +34,22 @@ namespace Giving__FinalProcekt_.Controllers
             model.Socials = _context.Socials.ToList();
             model.HomeSliders = _context.HomeSliders.ToList();
             model.About = _context.Abouts.FirstOrDefault();
-            model.Cause = _context.Causes.FirstOrDefault();
+            model.Cause = _context.Causes.
+                                            Include(p => p.DonatePrices).
+                                            ThenInclude(p => p.Cause).
+                                            Include(p => p.DonatePrices).
+                                            ThenInclude(p => p.Donateee).
+                                            Include(p => p.DonatePrices).
+                                            ThenInclude(p => p.Priceee).FirstOrDefault();
+
             model.Causes = _context.Causes.OrderByDescending(e => e.CreatedDate).Take(5).ToList();
             model.Volunteers = _context.Volunteers.OrderByDescending(e => e.Name).Take(3).ToList();
 
             return View(model);
         }
+
+        //Sucsribe send mails sections
+
         [HttpPost]
         public IActionResult SendMessage(VmHome model)
         {
@@ -88,6 +102,9 @@ namespace Giving__FinalProcekt_.Controllers
         //        return Json(response);
         //    }
         //}
+
+
+        //Subscribe sections
 
         public IActionResult Subscribe(string email)
         {

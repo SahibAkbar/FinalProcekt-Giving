@@ -9,23 +9,20 @@ using System.Threading.Tasks;
 
 namespace Giving__FinalProcekt_.Models
 {
-    public class CustomUser: IdentityUser
+    public class CustomUser : IdentityUser
     {
+        [MaxLength(100)]
+        public string Name { get; set; }
+        [MaxLength(300)]
+        public string Title { get; set; }
+
         [MaxLength(250)]
         public string Image { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
-        [MaxLength(80)]
-        public string FullName { get; set; }
-        public DateTime CreatedDate { get; set; }
-        [MaxLength(250)]
-        public string Password { get; set; }
+
         [NotMapped]
         public string RoleId { get; set; }
-
-
-        [MaxLength(500)]
-        public string ResetPasswordCode { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace Giving__FinalProcekt_.Controllers
         {
             _context = context;
         }
+        //Donate sections
 
         [HttpPost]
         public IActionResult Index(VmDonate vmDonate)

@@ -19,6 +19,8 @@ namespace Giving__FinalProcekt_.Controllers
             _context = context;
         }
 
+        //Causes section
+
         public IActionResult Index()
         {
             VmCauses model = new VmCauses();
@@ -47,6 +49,7 @@ namespace Giving__FinalProcekt_.Controllers
 
             return View(model);
         }
+        //CausesController Detail Sections
     
         public IActionResult Detail(int? id,VmSearch search)
         {
@@ -97,6 +100,10 @@ namespace Giving__FinalProcekt_.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+        //CausesController Comment Section
+
         [HttpPost]
         public IActionResult PostComment(CommentPost1 commentPost)
         {

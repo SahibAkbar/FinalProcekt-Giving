@@ -17,6 +17,8 @@ namespace Giving__FinalProcekt_.Controllers
         {
             _context = context;
         }
+
+        //Contact sections
         public IActionResult Index()
         {
             VmContact model = new VmContact();
@@ -31,6 +33,9 @@ namespace Giving__FinalProcekt_.Controllers
             }
 
         }
+
+        //Contact message sections
+
         [HttpPost]
         public IActionResult SendMessage(VmContact model)
         {

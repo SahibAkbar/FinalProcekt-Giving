@@ -18,6 +18,8 @@ namespace Giving__FinalProcekt_.Controllers
             _context = context;
         }
 
+
+        //Teams sections
         public IActionResult Index()
         {
             VmVolunteer model = new VmVolunteer();
@@ -32,6 +34,8 @@ namespace Giving__FinalProcekt_.Controllers
 
             return View(model);
         }
+
+        //Temas sections details
         public IActionResult Detail(int? id)
         {
             Volunteer volunteer = null;

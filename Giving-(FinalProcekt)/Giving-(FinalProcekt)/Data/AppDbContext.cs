@@ -17,6 +17,7 @@ namespace Giving__FinalProcekt_.Data
         public DbSet<AboutOption> AboutOptions { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<Cause> Causes { get; set; }
+        public DbSet<CustomUser> CustomUsers { get; set; }
         public DbSet<CauseGallery> CauseGalleries { get; set; }
         public DbSet<Comment1> Comments { get; set; }
         public DbSet<CommentPost1> CommentPosts { get; set; }

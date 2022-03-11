@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sahib\\Desktop\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj": {}
+    "C:\\Users\\Sahib\\Desktop\\BackEnd\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sahib\\Desktop\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj": {
+    "C:\\Users\\Sahib\\Desktop\\BackEnd\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sahib\\Desktop\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj",
+        "projectUniqueName": "C:\\Users\\Sahib\\Desktop\\BackEnd\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj",
         "projectName": "Giving-(FinalProcekt)",
-        "projectPath": "C:\\Users\\Sahib\\Desktop\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj",
+        "projectPath": "C:\\Users\\Sahib\\Desktop\\BackEnd\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj",
         "packagesPath": "C:\\Users\\Sahib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sahib\\Desktop\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\obj\\",
+        "outputPath": "C:\\Users\\Sahib\\Desktop\\BackEnd\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Sahib\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -187,27 +187,37 @@
 <!-- Heart to heart start -->
 <section>
     <div class="parallax">
-        <div class="overlay">
+        <div class="overlay" style="background-image:url('/Uploads/@Model.Cause.Image')">
             <div class="wpb-wraper">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 left u-fade-type-left js-scroll-trigger">
                             <div class="content">
-                                <h3>Heart to heart</h3>
-                                <p>Heart to Heart is a gathering of wives, mothers, sisters, daughters, and best friends for a luncheon and</p>
+                                <h3>@Model.Cause.Title</h3>
+                                <p>@Model.Cause.Content</p>
                                 <div class="statusbar">
-                                    <div class="bar"></div>
+                                    @{
+                                        var w = Model.Cause.DonatePrices.ToList();
+                                        var j = 0;
+                                        foreach (var item2 in w)
+                                        {
+                                            j += item2.Priceee.Money;
+                                        }
+                                        var a = j;
+                                        double r = ((a * 100) / Model.Cause.CauseNeed);
+                                        <div class="bar" style="width: @(r+"%") !important"></div>
+                                    }
                                 </div>
                                 <div class="text">
                                     <h4>
-                                        to go <span>$10000</span>
+                                        to go <span>$@Model.Cause.CauseNeed</span>
                                     </h4>
                                     <a href="#">Donate</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 right u-fade-type-right js-scroll-trigger">
-                            <img src="assets/img/slider/heart-in-handphoto-500x297.jpg" alt="">
+                            <img src="~/Uploads/@Model.Cause.Image" alt="">
                         </div>
                     </div>
                 </div>

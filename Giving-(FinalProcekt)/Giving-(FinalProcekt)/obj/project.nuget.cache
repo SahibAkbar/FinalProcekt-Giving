@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P89Ujy3BSBXnmDcjMvqIA2M0+hd/7/piOXDIlRHov8ZT9uI5wdw2sdAy7yDVB3z38cJ+lIq7rzjnvOgCtM3nPA==",
+  "dgSpecHash": "rFsaEuGPBnxNExdlo9VXrdIz04ZaJEYUnPsyldL7DRCl1gUQAQEolyjPHvsstXk6V8qEa+sYEEpqv3RD3nmDyw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sahib\\Desktop\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj",
+  "projectFilePath": "C:\\Users\\Sahib\\Desktop\\BackEnd\\Giving-(FinalProcekt)\\Giving-(FinalProcekt)\\Giving-(FinalProcekt).csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sahib\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Sahib\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.13\\microsoft.aspnetcore.cryptography.internal.5.0.13.nupkg.sha512",

@@ -1,4 +1,6 @@
-﻿@inject AppDbContext context
+﻿@inject UserManager<IdentityUser> userManager
+@inject SignInManager<IdentityUser> signInManager
+@inject AppDbContext context
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Quixlab</title>
+    <title>Giving Admin</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="~/Areas/images/favicon.png" />
     <!-- Pignose Calender -->
@@ -110,72 +112,60 @@
                                 </div>
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        @{
-                                            var messages = context.Contacts.OrderByDescending(m => m.CreatedDate).Take(3).ToList();
+                                        @{ var messages = context.Contacts.OrderByDescending(m => m.CreatedDate).Take(3).ToList();
                                             foreach (var m in messages)
                                             {
 
-                                                <li class="notification-unread">
-                                                    <a asp-area="admin" asp-controller="Message" asp-action="Read" asp-route-Id="@m.Id">
-                                                        <img class="float-left mr-3 avatar-img" src="~/Areas/images/avatar/3.jpg" alt="">
-                                                        <div class="notification-content">
-                                                            <div class="notification-heading">@m.Name</div>
-                                                            <div class="notification-timestamp">
-                                                                @{ var date = (DateTime.Now - m.CreatedDate);
-                                                                    if (date.Days == 0)
-                                                                    {
-                                                                        if (date.Hours == 0)
-                                                                        {
-                                                                            if (date.Minutes == 0)
-                                                                            { @(date.Seconds) @(" seconds before") }
-                                                                            else
-                                                                            { @(date.Minutes) @(" minutes before") }
-                                                                        }
-                                                                        else
-                                                                        { @(date.Hours) @(" hours before") }
-                                                                    }
-                                                                    else
-                                                                    { @(date.Days) @(" days before") }
-                                                                }
-                                                            </div>
-                                                            <div class="notification-text">@(m.Message.Length>20?m.Message.Substring(0,18)+"...":m.Message)</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            }
-                                        }
+                                <li class="notification-unread">
+                                    <a asp-area="admin" asp-controller="Message" asp-action="Read" asp-route-Id="@m.Id">
+                                        <img class="float-left mr-3 avatar-img" src="~/Areas/images/avatar/3.jpg" alt="">
+                                        <div class="notification-content">
+                                            <div class="notification-heading">@m.Name</div>
+                                            <div class="notification-timestamp">
+                                                @{ var date = (DateTime.Now - m.CreatedDate);
+                                                    if (date.Days == 0)
+                                                    {
+                                                        if (date.Hours == 0)
+                                                        {
+                                                            if (date.Minutes == 0)
+                                                            { @(date.Seconds) @(" seconds before") }
+                                                            else
+                                                            { @(date.Minutes) @(" minutes before") }
+                                                        }
+                                                        else
+                                                        { @(date.Hours) @(" hours before") }
+                                                    }
+                                                    else
+                                                    { @(date.Days) @(" days before") } }
+                                            </div>
+                                            <div class="notification-text">@(m.Message.Length>20?m.Message.Substring(0,18)+"...":m.Message)</div>
+                                        </div>
+                                    </a>
+                                </li>
+ } }
                                     </ul>
 
                                 </div>
                             </div>
                         </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
 
-                        <li class="icons dropdown">
-                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                                <span class="activity active"></span>
-                                <img src="~/Areas/images/avatar/Profile.jpeg" style="object-fit:cover;" alt="">
-                            </div>
-                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void()">
-                                                <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
-                                            </a>
-                                        </li>
 
-                                        <hr class="my-2">
-                                        <li>
-                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
-                                        </li>
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
+                                <li class="icons dropdown">
+                                    <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                        <span class="activity active"></span>
+                                        <img src="~/Uploads/@(context.CustomUsers.Find(userManager.GetUserId(User)).Image==null?"default-avatar.png":context.CustomUsers.Find(userManager.GetUserId(User)).Image)" style="object-fit:cover;" alt="">
+                                    </div>
+                                    <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                        <div class="dropdown-content-body">
+                                            <ul>
+                                                <li><a asp-controller="Account" asp-action="Logout"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                          }
                     </ul>
                 </div>
             </div>
@@ -195,46 +185,8 @@
                             <i class="fas fa-home"></i><span class="nav-text">Home Page</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a asp-area="admin" asp-controller="Home" asp-action="Index">Home 1</a></li>
+                            <li><a asp-area="admin" asp-controller="Home" asp-action="Index">Home</a></li>
                             <!-- <li><a href="./index-2.html">Home 2</a></li> -->
-                        </ul>
-                    </li>
-                    @*<li class="mega-menu mega-menu-sm">
-                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                                <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
-                            </a>
-                            <ul aria-expanded="false">
-                                <li><a href="./layout-blank.html">Blank</a></li>
-                                <li><a href="./layout-one-column.html">One Column</a></li>
-                                <li><a href="./layout-two-column.html">Two column</a></li>
-                                <li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-                                <li><a href="./layout-vertical.html">Vertical</a></li>
-                                <li><a href="./layout-horizontal.html">Horizontal</a></li>
-                                <li><a href="./layout-boxed.html">Boxed</a></li>
-                                <li><a href="./layout-wide.html">Wide</a></li>
-
-
-                                <li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-                                <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-                            </ul>
-                        </li>*@
-                    @*<li class="nav-label">Apps</li>*@
-                    @*<li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./email-inbox.html">Inbox</a></li>
-                            <li><a href="./email-read.html">Read</a></li>
-                            <li><a href="./email-compose.html">Compose</a></li>
-                        </ul>
-                    </li>*@
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-screen-tablet menu-icon"></i><span class="nav-text">Apps</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="./app-profile.html">Profile</a></li>
                         </ul>
                     </li>
                     @*<li class="nav-label">Site Settings</li>*@
@@ -332,22 +284,12 @@
                     @*<li class="nav-label">Pages</li>*@
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
+                            <i class="fas fa-user-circle"></i></i><span class="nav-text">Account</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./page-login.html">Login</a></li>
-                            <li><a href="./page-register.html">Register</a></li>
-                            <li><a href="./page-lock.html">Lock Screen</a></li>
-                            <li>
-                                <a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./page-error-404.html">Error 404</a></li>
-                                    <li><a href="./page-error-403.html">Error 403</a></li>
-                                    <li><a href="./page-error-400.html">Error 400</a></li>
-                                    <li><a href="./page-error-500.html">Error 500</a></li>
-                                    <li><a href="./page-error-503.html">Error 503</a></li>
-                                </ul>
-                            </li>
+                            <li><a asp-area="admin" asp-controller="Account" asp-action="Register">Register</a></li>
+                            <li><a asp-area="admin" asp-controller="Account" asp-action="Users">Users</a></li>
+                            <li><a asp-area="admin" asp-controller="Account" asp-action="Roles">Roles</a></li>
                         </ul>
                     </li>
                 </ul>

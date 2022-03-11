@@ -18,6 +18,7 @@ namespace Giving__FinalProcekt_.Controllers
         {
             _context = context;
         }
+        //About Section
         public IActionResult Index()
         {
 
@@ -39,8 +40,8 @@ namespace Giving__FinalProcekt_.Controllers
             model.About = _context.Abouts.FirstOrDefault();
             model.AboutOptions = _context.AboutOptions.ToList();
 
-            //ViewBag.PrizeId = _context.Prices.ToList();
-            //var w = _context.DonatePrices.Include(d => d.Priceee).Where(c => c.CauseId == model.Cause1.Id).ToList();
+            //ViewBag.PrizeId = _context.Prices.FirstOrDefault(p=>p.Id == model.Cause.Id);
+            //var w = _context.DonatePrices.Include(d => d.Priceee).Where(c => c.CauseId == model.Cause.Id);
             //var a = 0;
             //foreach (var item in w)
             //{

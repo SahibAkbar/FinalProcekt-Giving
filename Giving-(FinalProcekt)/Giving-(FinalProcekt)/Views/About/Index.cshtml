@@ -89,15 +89,26 @@
                         <p>@Model.Cause.Content</p>
                         <div class="statusbar">
                             @*@{
-                                var a = ViewBag.Total;
-                                double r = ((a * 100) / (double)Model.Cause.CauseNeed);
-                                <div class="bar" style="width: @(r+"%")"></div>
-                            }*@
-                            <div class="bar"></div>
+            var a = ViewBag.Total;
+            double r = ((a * 100) / (double)Model.Cause.CauseNeed);
+            <div class="bar" style="width: @(r+"%")"></div>
+        }*@
+
+                            @{
+                                var w = Model.Cause.DonatePrices.ToList();
+                                var j = 0;
+                                foreach (var item2 in w)
+                                {
+                                    j += item2.Priceee.Money;
+                                }
+                                var a = j;
+                                double r = ((a * 100) / Model.Cause.CauseNeed);
+                                <div class="bar" style="width: @(r+"%") !important"></div>
+                            }
                         </div>
                         <div class="text">
                             <h4>
-                                to go <span>$2400</span></h4>
+                                to go <span>@Model.Cause.CauseNeed</span></h4>
                                 <a asp-controller="Causes" asp-action="Detail" asp-route-id="@Model.Cause.Id">Donate</a>
                         </div>
                     </div>

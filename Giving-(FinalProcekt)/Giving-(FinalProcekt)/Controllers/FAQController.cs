@@ -16,6 +16,9 @@ namespace Giving__FinalProcekt_.Controllers
         {
             _context = context;
         }
+
+        //FAQ sectiosn
+
         public IActionResult Index()
         {
             VmFAQ model = new VmFAQ();

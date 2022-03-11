@@ -1,4 +1,5 @@
 using Giving__FinalProcekt_.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -34,8 +35,8 @@ namespace Giving__FinalProcekt_
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+            // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -61,7 +62,7 @@ namespace Giving__FinalProcekt_
                 endpoints.MapAreaControllerRoute(
                    name: "Areas",
                    areaName: "admin",
-                   pattern: "admin/{controller=Home}/{action=index}/{id?}"
+                   pattern: "admin/{controller=Account}/{action=Login}/{id?}"
                    );
                 endpoints.MapControllerRoute(
                     name: "default",

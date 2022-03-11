@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Giving__FinalProcekt_.ViewModel
 {
-    public class VmUser
+    public class VmUsers
     {
         public List<CustomUser> CustomUsers { get; set; }
-        public List<IdentityRole> Roles { get; set; }
+        public List<IdentityRole> IdentityRoles { get; set; }
         public List<IdentityUserRole<string>> UserRoles { get; set; }
     }
 }

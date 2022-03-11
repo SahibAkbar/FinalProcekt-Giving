@@ -20,6 +20,9 @@ namespace Giving__FinalProcekt_.Controllers
             _context = context;
         }
 
+        //event sections 
+
+
         public IActionResult Index(int? tagId)
         {
             VmEvent model = new VmEvent();
@@ -47,6 +50,9 @@ namespace Giving__FinalProcekt_.Controllers
 
             return View(model);
         }
+
+        //Events details sections
+
         public IActionResult Detail(int? id)
         {
             Event event1 = null;
